@@ -5,10 +5,6 @@ This repository contains configuration files and topology details for a comprehe
 
 *For the complete detailed README specification including asset structures, EVE-NG setups, and verification testing, please refer to the full document in the source.*
 
----
-
-## 👤 Project Engineering
-* **Designed, Configured, and Validated by:** Zaki Shaikh
 
 ---
 
