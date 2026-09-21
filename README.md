@@ -9,7 +9,7 @@ The environment integrates a primary **Corporate Data Center (DC)**, an asynchro
 ---
 
 ## 🗺️ Logical Infrastructure Topology
-![Infrastructure Architecture](topology/network_topology.png)
+![Infrastructure Architecture](topology/network-topology.png)
 
 ---
 
