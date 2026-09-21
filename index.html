@@ -24,7 +24,7 @@
             margin: 0 auto; 
             padding: 30px 20px; 
             background-color: var(--bg-color);
-            /* Tech mesh pattern background */
+            /* Tech mesh matrix grid */
             background-image: 
                 linear-gradient(rgba(46, 164, 79, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(46, 164, 79, 0.02) 1px, transparent 1px);
@@ -32,7 +32,7 @@
             background-attachment: fixed;
         }
 
-        /* Glassmorphism Header Layout */
+        /* Glassmorphism Header */
         header { 
             background: var(--card-bg);
             backdrop-filter: blur(8px);
@@ -83,21 +83,21 @@
             color: var(--text-light);
         }
 
-        /* High-End Circular Profile Frame with Glow Effect */
+        /* Profile Badge Circle - Color-matched to your new photo background */
         .profile-container { 
             flex-shrink: 0; 
-            width: 120px; 
-            height: 120px; 
+            width: 125px; 
+            height: 125px; 
             border-radius: 50%; 
             border: 3px solid var(--accent-green); 
             overflow: hidden; 
-            background: #ffffff; /* Seamless blend with your photo's white background */
+            background: #e9e9e9; /* Seamless background match */
             box-shadow: 0 0 20px rgba(46, 164, 79, 0.35);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
         }
 
         .profile-container:hover {
-            transform: scale(1.05);
+            transform: scale(1.06);
             box-shadow: 0 0 25px rgba(46, 164, 79, 0.6);
         }
 
@@ -105,10 +105,10 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center top;
+            object-position: center 15%; /* Perfectly frames your facial profile */
         }
 
-        /* High-Tech Card Styles */
+        /* Content Sections */
         .section { 
             background: var(--card-bg);
             backdrop-filter: blur(8px);
@@ -126,9 +126,6 @@
             color: var(--text-light); 
             margin-top: 0; 
             font-size: 22px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         h3 {
@@ -138,7 +135,7 @@
             margin-bottom: 10px;
         }
 
-        /* Topology Showcase Frame */
+        /* Network Topology Container */
         .img-container { 
             text-align: center; 
             margin: 25px 0; 
@@ -169,7 +166,7 @@
             color: var(--text-light);
         }
 
-        /* Clean Tech Badges */
+        /* Badges */
         .badge { 
             background: rgba(31, 111, 235, 0.15); 
             color: var(--accent-blue); 
@@ -189,7 +186,7 @@
             border: 1px solid rgba(46, 164, 79, 0.3);
         }
 
-        /* Modern CTA Button styling */
+        /* Buttons */
         .btn-group {
             margin-top: 25px;
         }
@@ -203,7 +200,7 @@
             font-weight: 600;
             border-radius: 6px;
             text-decoration: none;
-            transition: background-color 0.2s, cubic-bezier(0.16, 1, 0.3, 1) transform;
+            transition: background-color 0.2s, transform 0.2s;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 4px 12px rgba(46, 164, 79, 0.2);
         }
@@ -211,7 +208,6 @@
         .btn:hover {
             background-color: #2ea44f;
             transform: translateY(-1px);
-            text-decoration: none;
         }
 
         .footer { 
@@ -235,7 +231,7 @@
 </head>
 <body>
 
-    <!-- Header Section with Zaki Shaikh's Profile Info -->
+    <!-- Header Section -->
     <header>
         <div class="header-text">
             <h1>Enterprise Network Simulation: Multi-Branch Infrastructure</h1>
@@ -245,7 +241,6 @@
             </div>
         </div>
         <div class="profile-container">
-            <!-- Pulls your profile headshot image from the repository directory -->
             <img src="topology/profile_zaki.jpeg" alt="Zaki Shaikh">
         </div>
     </header>
@@ -288,3 +283,4 @@
 
         <h3>2. Zoning & Traffic Micro-Segmentation</h3>
         <ul>
+            <li><strong>Edge Next-Gen Firewalls:</strong> Deployed perimeter security clusters managing isolated administrative contexts for every network transition.</li>
