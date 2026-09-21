@@ -47,5 +47,5 @@ The following operational verification routines were carried out directly on the
 ---
 
 ## 👤 Project Engineering
-* **Designed, Configured, and Validated by:** [Your Name Here]
-* **Professional Network Profile:** [Insert Your LinkedIn Link Here]
+* **Designed, Configured, and Validated by:** [Zaki Shaikh]
+* **Professional Network Profile:** [https://www.linkedin.com/in/zaki-s-a96476129/]
