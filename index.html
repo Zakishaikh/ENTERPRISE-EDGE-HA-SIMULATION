@@ -1,157 +1,233 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enterprise Network Failover Simulation | Zaki Shaikh</title>
     <style>
+        :root {
+            --bg-color: #080c10;
+            --card-bg: rgba(22, 27, 34, 0.85);
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-light: #f0f6fc;
+            --accent-green: #2ea44f;
+            --glow-green: #238636;
+            --accent-blue: #58a6ff;
+        }
+
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             line-height: 1.6; 
-            color: #c9d1d9; 
+            color: var(--text-main); 
             max-width: 1000px; 
             margin: 0 auto; 
-            padding: 20px; 
-            background-color: #0d1117; 
+            padding: 30px 20px; 
+            background-color: var(--bg-color);
+            /* Tech mesh pattern background */
+            background-image: 
+                linear-gradient(rgba(46, 164, 79, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(46, 164, 79, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-attachment: fixed;
         }
+
+        /* Glassmorphism Header Layout */
         header { 
-            background: #161b22; 
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: #fff; 
-            padding: 35px; 
-            border-radius: 6px; 
-            margin-bottom: 25px; 
+            padding: 40px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
             position: relative; 
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            gap: 20px; 
-            border: 1px solid #30363d;
+            gap: 30px; 
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
         }
+
         .header-text { 
             flex: 1; 
         }
+
         header h1 { 
             margin: 0; 
-            font-size: 26px; 
+            font-size: 28px; 
             font-weight: 700;
-            color: #f0f6fc;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
         }
+
         header p { 
-            margin: 10px 0 0 0; 
+            margin: 12px 0 0 0; 
             color: #8b949e; 
             font-size: 16px;
         }
+
         .engineer-badge { 
-            margin-top: 15px; 
+            margin-top: 18px; 
             font-size: 14px; 
-            background: #21262d; 
-            padding: 6px 14px; 
+            background: rgba(33, 38, 45, 0.7); 
+            padding: 8px 16px; 
             border-radius: 20px; 
             display: inline-block; 
-            color: #c9d1d9; 
-            border: 1px solid #30363d;
+            color: var(--text-main); 
+            border: 1px solid var(--border-color);
         }
+
+        .engineer-badge strong {
+            color: var(--text-light);
+        }
+
+        /* High-End Circular Profile Frame with Glow Effect */
         .profile-container { 
             flex-shrink: 0; 
-            width: 110px; 
-            height: 110px; 
+            width: 120px; 
+            height: 120px; 
             border-radius: 50%; 
-            border: 3px solid #238636; 
+            border: 3px solid var(--accent-green); 
             overflow: hidden; 
-            background: #0d1117; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            background: #ffffff; /* Seamless blend with your photo's white background */
+            box-shadow: 0 0 20px rgba(46, 164, 79, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .profile-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(46, 164, 79, 0.6);
+        }
+
         .profile-container img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
             object-position: center top;
         }
+
+        /* High-Tech Card Styles */
         .section { 
-            background: #161b22; 
-            padding: 30px; 
-            border-radius: 6px; 
-            border: 1px solid #30363d; 
-            margin-bottom: 25px; 
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 35px; 
+            border-radius: 12px; 
+            border: 1px solid var(--border-color); 
+            margin-bottom: 30px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
+
         h2 { 
-            border-bottom: 1px solid #30363d; 
-            padding-bottom: 10px; 
-            color: #f0f6fc; 
+            border-bottom: 1px solid var(--border-color); 
+            padding-bottom: 12px; 
+            color: var(--text-light); 
             margin-top: 0; 
-            font-size: 20px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
         h3 {
-            color: #58a6ff;
-            font-size: 16px;
-            margin-top: 20px;
-            margin-bottom: 8px;
+            color: var(--accent-blue);
+            font-size: 17px;
+            margin-top: 24px;
+            margin-bottom: 10px;
         }
+
+        /* Topology Showcase Frame */
         .img-container { 
             text-align: center; 
             margin: 25px 0; 
-            background: #0d1117; 
-            padding: 15px; 
-            border: 1px solid #30363d; 
-            border-radius: 6px; 
+            background: #090d13; 
+            padding: 20px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
         }
+
         .img-container img { 
             max-width: 100%; 
             height: auto; 
-            border-radius: 4px; 
+            border-radius: 6px; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         ul { 
             padding-left: 20px; 
-            margin: 10px 0;
+            margin: 12px 0;
         }
+
         li { 
-            margin-bottom: 10px; 
+            margin-bottom: 12px; 
         }
-        strong {
-            color: #f0f6fc;
+
+        li strong {
+            color: var(--text-light);
         }
+
+        /* Clean Tech Badges */
         .badge { 
-            background: #1f6feb; 
-            color: #f0f6fc; 
-            padding: 4px 10px; 
-            border-radius: 4px; 
+            background: rgba(31, 111, 235, 0.15); 
+            color: var(--accent-blue); 
+            padding: 5px 12px; 
+            border-radius: 6px; 
             font-size: 13px; 
             font-weight: 600; 
             display: inline-block; 
             margin-right: 8px; 
-            margin-top: 5px;
+            margin-top: 8px;
+            border: 1px solid rgba(88, 166, 255, 0.3);
         }
+
+        .badge-security {
+            background: rgba(46, 164, 79, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(46, 164, 79, 0.3);
+        }
+
+        /* Modern CTA Button styling */
         .btn-group {
-            margin-top: 20px;
+            margin-top: 25px;
         }
+
         .btn {
             display: inline-block;
-            background-color: #238636;
+            background-color: var(--accent-green);
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-size: 14px;
             font-weight: 600;
             border-radius: 6px;
-            border: 1px solid rgba(240,246,252,0.1);
-            cursor: pointer;
-            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.2s, cubic-bezier(0.16, 1, 0.3, 1) transform;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(46, 164, 79, 0.2);
         }
+
         .btn:hover {
             background-color: #2ea44f;
+            transform: translateY(-1px);
             text-decoration: none;
         }
+
         .footer { 
             text-align: center; 
-            margin-top: 50px; 
-            padding-top: 20px;
-            border-top: 1px solid #30363d;
+            margin-top: 60px; 
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
             font-size: 14px; 
             color: #8b949e; 
         }
+
         a { 
-            color: #58a6ff; 
+            color: var(--accent-blue); 
             text-decoration: none; 
         }
+
         a:hover { 
             text-decoration: underline; 
         }
@@ -163,74 +239,52 @@ html<!DOCTYPE html>
     <header>
         <div class="header-text">
             <h1>Enterprise Network Simulation: Multi-Branch Infrastructure</h1>
-            <p>A production-tier topology demonstrating dual-ISP failover and zonal security segmentation.</p>
+            <p>A production-tier architecture demonstrating dual-ISP failover and dynamic boundary segmentation.</p>
             <div class="engineer-badge">
-                🛠️ Network Security Engineer: <strong>Zaki Shaikh</strong>
+                🛡️ Network Security Engineer: <strong>Zaki Shaikh</strong>
             </div>
         </div>
         <div class="profile-container">
-            <!-- Points to your headshot image inside the topology folder -->
+            <!-- Pulls your profile headshot image from the repository directory -->
             <img src="topology/profile_zaki.jpeg" alt="Zaki Shaikh">
         </div>
     </header>
 
     <!-- Overview Section -->
     <div class="section">
-        <h2>📌 Project Overview</h2>
-        <p>This deployment demonstrates a highly available corporate network structure built to eliminate single points of failure at the internet boundary and enforce secure micro-segmentation across internal enterprise units. The environment interconnects a primary <strong>Data Center (DC)</strong>, a <strong>Disaster Recovery (DR) hot-site</strong>, and <strong>three remote corporate Branch Offices</strong>.</p>
-        <div style="margin-top: 15px;">
+        <h2>📌 Project Infrastructure Overview</h2>
+        <p>This deployment validates a highly available corporate infrastructure designed to rule out single points of failure at the enterprise routing layer and apply hard micro-segmentation policies across internal environments. The simulated design flawlessly interconnects a primary <strong>Corporate Data Center (DC)</strong>, a synchronized <strong>Disaster Recovery (DR) hot-site</strong>, and <strong>three remote Branch Offices</strong>.</p>
+        <div style="margin-top: 10px;">
             <span class="badge">FortiOS</span>
-            <span class="badge">Cisco IOS</span>
-            <span class="badge">High Availability</span>
-            <span class="badge">Network Segmentation</span>
-            <span class="badge">Cybersecurity</span>
+            <span class="badge">Cisco IOS-XE</span>
+            <span class="badge">WAN Redundancy</span>
+            <span class="badge">VLAN Isolation</span>
+            <span class="badge badge-security">Cybersecurity Automation</span>
         </div>
         <div class="btn-group">
-            <a href="https://github.com" target="_blank" class="btn">View on GitHub</a>
+            <a href="https://github.com" target="_blank" class="btn">Explore Configuration Code Repository</a>
         </div>
     </div>
 
-    <!-- Diagram Section -->
+    <!-- Diagram Showcase Section -->
     <div class="section">
-        <h2>🗺️ Network Topology</h2>
-        <p>The core topology diagram highlighting routing pathways, transport edges, and security boundaries verified during data plane testing:</p>
+        <h2>🗺️ Infrastructure Topology</h2>
+        <p>Verified structural routing pathways, core zones, and firewall network boundaries mapped out during data-plane validation checks:</p>
         <div class="img-container">
-            <img src="topology/network_topology.png" alt="Network Topology Diagram">
+            <img src="topology/network-topology.png" alt="Network Topology Diagram">
         </div>
     </div>
 
-    <!-- Design Section -->
+    <!-- Architecture Engineering Section -->
     <div class="section">
-        <h2>🛠️ Design & Technical Highlights</h2>
+        <h2>🛠️ Core Engineering Specifications</h2>
         
-        <h3>1. WAN Edge Routing & Redundancy</h3>
+        <h3>1. Multi-Provider Edge Redundancy</h3>
         <ul>
-            <li><strong>Dual-ISP Transport:</strong> Core locations are dual-homed across redundant service providers (ISP1 and ISP2). Link failures automatically shift traffic paths to maintain session continuity.</li>
-            <li><strong>Deterministic Gateway Paths:</strong> Standardized on static cost tracking to manage predictable transport patterns over the internet boundaries.</li>
-            <li><strong>Private Name Resolution:</strong> Isolated corporate naming conventions inside standalone services (DC_DNS / DR_DNS) separate from exposed internet directory assets.</li>
+            <li><strong>Active Dual-ISP Uplinks:</strong> Sites route traffic concurrently via independent transit paths (**ISP1** and **ISP2**). Outages trigger instant, deterministic failover events to guarantee infrastructure uptime.</li>
+            <li><strong>Path Metrics Control:</strong> Integrated precise link cost properties directly across the border interfaces to manage standard routing behavior symmetrically.</li>
+            <li><strong>Private Subnet Directory:</strong> Configured dedicated localized lookup environments (`DC_DNS` / `DR_DNS`) to shield production infrastructure assets from public scanning grids.</li>
         </ul>
 
-        <h3>2. Segmentation & Security Controls</h3>
+        <h3>2. Zoning & Traffic Micro-Segmentation</h3>
         <ul>
-            <li><strong>Next-Generation Perimeter Firewalls:</strong> Every infrastructure boundary utilizes specialized firewall configurations to partition administrative security contexts.</li>
-            <li><strong>Fabric Level VLAN Isolation:</strong> Standardized endpoints (CORP) share underlying hardware switches with guest nodes (GUEST) but are strictly partitioned at Layer 3 on the gateway.</li>
-            <li><strong>DMZ Infrastructure Hardening:</strong> Critical frontend nodes are contained in strict Demilitarized Zones, filtering public ingress traffic to explicit web services.</li>
-        </ul>
-    </div>
-
-    <!-- Validation Testing Section -->
-    <div class="section">
-        <h2>🧪 Functional Validation</h2>
-        <ul>
-            <li><strong>Data Plane Verification:</strong> Successfully trace-routed data paths from isolated remote user stations back to internal primary database resources across the core providers.</li>
-            <li><strong>Failover Resilience Run:</strong> Intentionally dropped the primary link on ISP1; edge routing successfully moved live transaction states to the secondary backup path in under 3 seconds without losing connection sessions.</li>
-        </ul>
-    </div>
-
-    <!-- Footer Area -->
-    <div class="footer">
-        <p>Designed and Configured by <strong>Zaki Shaikh</strong> | Contact: <a href="mailto:shaikh.zaki2000@gmail.com">shaikh.zaki2000@gmail.com</a></p>
-    </div>
-
-</body>
-</html>
