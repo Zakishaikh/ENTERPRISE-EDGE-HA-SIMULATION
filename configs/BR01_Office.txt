@@ -1,0 +1,29 @@
+cisco===============================================================================
+! BRANCH 01 DISTRIBUTION SWITCH CONFIGURATION (BR01_SW)
+===============================================================================
+hostname BR01_SW
+
+vlan 100
+ name CORP_USERS
+vlan 200
+ name GUEST_USERS
+exit
+
+interface GigabitEthernet0/0
+ description Uplink to BR01_FW (port3)
+ ip address 10.101.0.2 255.255.255.0
+ no shutdown
+
+interface GigabitEthernet0/1
+ description Connection to BR01_CORP PC
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+
+interface GigabitEthernet0/2
+ description Connection to BR01_GUEST PC
+ switchport mode access
+ switchport access vlan 200
+ no shutdown
+
+ip route 0.0.0.0 0.0.0.0 10.101.0.1
