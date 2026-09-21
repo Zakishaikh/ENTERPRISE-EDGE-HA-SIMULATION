@@ -1,4 +1,5 @@
-markdown # High-Availability Multi-Site Enterprise Network Emulation & Validation
+markdown 
+# High-Availability Multi-Site Enterprise Network Emulation & Validation
 
 ## 📌 Project Architecture Overview
 This engineering project features the deployment, configuration, and validation of a high-availability, multi-site enterprise infrastructure. The architecture replicates a production-tier corporate environment designed to ensure zero single points of failure across transit edges, granular zonal micro-segmentation, and resilient disaster recovery state mechanisms.
