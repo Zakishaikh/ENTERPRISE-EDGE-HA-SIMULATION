@@ -1,0 +1,236 @@
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Network Failover Simulation | Zaki Shaikh</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #c9d1d9; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #0d1117; 
+        }
+        header { 
+            background: #161b22; 
+            color: #fff; 
+            padding: 35px; 
+            border-radius: 6px; 
+            margin-bottom: 25px; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 20px; 
+            border: 1px solid #30363d;
+        }
+        .header-text { 
+            flex: 1; 
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 26px; 
+            font-weight: 700;
+            color: #f0f6fc;
+        }
+        header p { 
+            margin: 10px 0 0 0; 
+            color: #8b949e; 
+            font-size: 16px;
+        }
+        .engineer-badge { 
+            margin-top: 15px; 
+            font-size: 14px; 
+            background: #21262d; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            display: inline-block; 
+            color: #c9d1d9; 
+            border: 1px solid #30363d;
+        }
+        .profile-container { 
+            flex-shrink: 0; 
+            width: 110px; 
+            height: 110px; 
+            border-radius: 50%; 
+            border: 3px solid #238636; 
+            overflow: hidden; 
+            background: #0d1117; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .profile-container img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center top;
+        }
+        .section { 
+            background: #161b22; 
+            padding: 30px; 
+            border-radius: 6px; 
+            border: 1px solid #30363d; 
+            margin-bottom: 25px; 
+        }
+        h2 { 
+            border-bottom: 1px solid #30363d; 
+            padding-bottom: 10px; 
+            color: #f0f6fc; 
+            margin-top: 0; 
+            font-size: 20px;
+        }
+        h3 {
+            color: #58a6ff;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        .img-container { 
+            text-align: center; 
+            margin: 25px 0; 
+            background: #0d1117; 
+            padding: 15px; 
+            border: 1px solid #30363d; 
+            border-radius: 6px; 
+        }
+        .img-container img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 4px; 
+        }
+        ul { 
+            padding-left: 20px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin-bottom: 10px; 
+        }
+        strong {
+            color: #f0f6fc;
+        }
+        .badge { 
+            background: #1f6feb; 
+            color: #f0f6fc; 
+            padding: 4px 10px; 
+            border-radius: 4px; 
+            font-size: 13px; 
+            font-weight: 600; 
+            display: inline-block; 
+            margin-right: 8px; 
+            margin-top: 5px;
+        }
+        .btn-group {
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #238636;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid rgba(240,246,252,0.1);
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #2ea44f;
+            text-decoration: none;
+        }
+        .footer { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+            font-size: 14px; 
+            color: #8b949e; 
+        }
+        a { 
+            color: #58a6ff; 
+            text-decoration: none; 
+        }
+        a:hover { 
+            text-decoration: underline; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Zaki Shaikh's Profile Info -->
+    <header>
+        <div class="header-text">
+            <h1>Enterprise Network Simulation: Multi-Branch Infrastructure</h1>
+            <p>A production-tier topology demonstrating dual-ISP failover and zonal security segmentation.</p>
+            <div class="engineer-badge">
+                🛠️ Network Security Engineer: <strong>Zaki Shaikh</strong>
+            </div>
+        </div>
+        <div class="profile-container">
+            <!-- Points to your headshot image inside the topology folder -->
+            <img src="topology/profile_zaki.jpeg" alt="Zaki Shaikh">
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <div class="section">
+        <h2>📌 Project Overview</h2>
+        <p>This deployment demonstrates a highly available corporate network structure built to eliminate single points of failure at the internet boundary and enforce secure micro-segmentation across internal enterprise units. The environment interconnects a primary <strong>Data Center (DC)</strong>, a <strong>Disaster Recovery (DR) hot-site</strong>, and <strong>three remote corporate Branch Offices</strong>.</p>
+        <div style="margin-top: 15px;">
+            <span class="badge">FortiOS</span>
+            <span class="badge">Cisco IOS</span>
+            <span class="badge">High Availability</span>
+            <span class="badge">Network Segmentation</span>
+            <span class="badge">Cybersecurity</span>
+        </div>
+        <div class="btn-group">
+            <a href="https://github.com" target="_blank" class="btn">View on GitHub</a>
+        </div>
+    </div>
+
+    <!-- Diagram Section -->
+    <div class="section">
+        <h2>🗺️ Network Topology</h2>
+        <p>The core topology diagram highlighting routing pathways, transport edges, and security boundaries verified during data plane testing:</p>
+        <div class="img-container">
+            <img src="topology/network_topology.png" alt="Network Topology Diagram">
+        </div>
+    </div>
+
+    <!-- Design Section -->
+    <div class="section">
+        <h2>🛠️ Design & Technical Highlights</h2>
+        
+        <h3>1. WAN Edge Routing & Redundancy</h3>
+        <ul>
+            <li><strong>Dual-ISP Transport:</strong> Core locations are dual-homed across redundant service providers (ISP1 and ISP2). Link failures automatically shift traffic paths to maintain session continuity.</li>
+            <li><strong>Deterministic Gateway Paths:</strong> Standardized on static cost tracking to manage predictable transport patterns over the internet boundaries.</li>
+            <li><strong>Private Name Resolution:</strong> Isolated corporate naming conventions inside standalone services (DC_DNS / DR_DNS) separate from exposed internet directory assets.</li>
+        </ul>
+
+        <h3>2. Segmentation & Security Controls</h3>
+        <ul>
+            <li><strong>Next-Generation Perimeter Firewalls:</strong> Every infrastructure boundary utilizes specialized firewall configurations to partition administrative security contexts.</li>
+            <li><strong>Fabric Level VLAN Isolation:</strong> Standardized endpoints (CORP) share underlying hardware switches with guest nodes (GUEST) but are strictly partitioned at Layer 3 on the gateway.</li>
+            <li><strong>DMZ Infrastructure Hardening:</strong> Critical frontend nodes are contained in strict Demilitarized Zones, filtering public ingress traffic to explicit web services.</li>
+        </ul>
+    </div>
+
+    <!-- Validation Testing Section -->
+    <div class="section">
+        <h2>🧪 Functional Validation</h2>
+        <ul>
+            <li><strong>Data Plane Verification:</strong> Successfully trace-routed data paths from isolated remote user stations back to internal primary database resources across the core providers.</li>
+            <li><strong>Failover Resilience Run:</strong> Intentionally dropped the primary link on ISP1; edge routing successfully moved live transaction states to the secondary backup path in under 3 seconds without losing connection sessions.</li>
+        </ul>
+    </div>
+
+    <!-- Footer Area -->
+    <div class="footer">
+        <p>Designed and Configured by <strong>Zaki Shaikh</strong> | Contact: <a href="mailto:shaikh.zaki2000@gmail.com">shaikh.zaki2000@gmail.com</a></p>
+    </div>
+
+</body>
+</html>
