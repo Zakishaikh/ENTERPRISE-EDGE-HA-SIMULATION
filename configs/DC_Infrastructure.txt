@@ -1,0 +1,92 @@
+===============================================================================
+! DATACENTER CORE FIREWALL CONFIGURATION (DC_FW)
+===============================================================================
+config system interface
+    edit "port1"
+        set alias "ISP1-WAN"
+        set mode static
+        set ip 198.51.100.2 255.255.255.252
+        set allowaccess ping
+    next
+    edit "port2"
+        set alias "ISP2-WAN"
+        set mode static
+        set ip 203.0.113.2 255.255.255.252
+        set allowaccess ping
+    next
+    edit "port3"
+        set alias "HA-SYNC / DR-LINK"
+        set mode static
+        set ip 10.255.0.1 255.255.255.252
+        set allowaccess ping
+    next
+    edit "port4"
+        set alias "LAN-INLINE"
+        set mode static
+        set ip 10.10.0.1 255.255.255.0
+        set allowaccess ping https ssh
+    next
+    edit "port5"
+        set alias "MGMT"
+        set mode static
+        set ip 10.10.99.1 255.255.255.0
+        set allowaccess ping https ssh
+    next
+end
+
+config router static
+    edit 1
+        set gateway 198.51.100.1
+        set device "port1"
+        set distance 10
+    next
+    edit 2
+        set gateway 203.0.113.1
+        set device "port2"
+        set distance 20
+    next
+end
+
+===============================================================================
+! DATACENTER LAYER 3 CORE SWITCH CONFIGURATION (DC_SW)
+===============================================================================
+hostname DC_SW
+
+vlan 10
+ name SERVERS
+vlan 20
+ name INFRA_DNS
+vlan 99
+ name MANAGEMENT
+exit
+
+interface GigabitEthernet0/0
+ description Link to DC_FW (port4)
+ ip address 10.10.0.2 255.255.255.0
+ no shutdown
+
+interface GigabitEthernet0/1
+ description Link to DC_WEB
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+
+interface GigabitEthernet0/2
+ description Link to DC_APP
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+
+interface GigabitEthernet0/3
+ description Link to DC_DB
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+
+interface GigabitEthernet1/0
+ description Link to DC_DNS
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+
+ip route 0.0.0.0 0.0.0.0 10.10.0.1
