@@ -1,9 +1,14 @@
-# High-Availability Multi-Site Enterprise Network Emulation & Validation
+# Enterprise Network Simulation: Multi-Branch Infrastructure inside EVE-NG
 
-## 📌 Project Architecture Overview
-This engineering project features the deployment, configuration, and validation of a high-availability, multi-site enterprise infrastructure. The architecture replicates a production-tier corporate environment designed to ensure zero single points of failure across transit edges, granular zonal micro-segmentation, and resilient disaster recovery state mechanisms.
+## 📌 Project Overview
+This repository contains configuration files and topology details for a comprehensive multi-site enterprise network simulated within the **EVE-NG Emulation Platform**, featuring dual-homed provider fabrics (`ISP1` and `ISP2`), a Corporate Data Center, a Disaster Recovery site, and three remote branch offices.
 
-The environment integrates a primary **Corporate Data Center (DC)**, an asynchronous **Disaster Recovery (DR) hot-site**, and **three remote corporate Branch Offices** interacting via a dual-homed provider fabric (**ISP1** & **ISP2**).
+*For the complete detailed README specification including asset structures, EVE-NG setups, and verification testing, please refer to the full document in the source.*
+
+---
+
+## 👤 Project Engineering
+* **Designed, Configured, and Validated by:** Zaki Shaikh
 
 ---
 
