@@ -1,4 +1,3 @@
-markdown 
 # High-Availability Multi-Site Enterprise Network Emulation & Validation
 
 ## 📌 Project Architecture Overview
